@@ -16,8 +16,8 @@ jobs:
       - name: Setup environment
         uses: daaku/gh-action-apt-install@v4
         with:
-          packages: ccache libncurses5-dev libncurses-dev libssl-dev device-tree-compiler bc cpio lib32ncurses5-dev lib32z1 build-essential binutils bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip libcap-dev libseccomp-dev zlib1g-dev git aria2 
-          
+          packages: ccache libncurses5-dev libncurses-dev libssl-dev device-tree-compiler bc cpio lib32ncurses5-dev lib32z1 build-essential binutils bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip libcap-dev libseccomp-dev zlib1g-dev git aria2 upx
+
       - name: Pull toolchain
 
         run: |
@@ -31,7 +31,7 @@ jobs:
       - name: Pull clang
 
         run: |
-          
+
           cd $HOME
           mkdir -p -v $HOME/clang
 
@@ -52,5 +52,4 @@ jobs:
 
           export ARCH=arm64
           export PATH=${CLANG_PATH}:${PATH}
-          clang -c geji.c -o geji
-          
+          make
