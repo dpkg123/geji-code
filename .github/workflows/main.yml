@@ -1,4 +1,4 @@
-name: ci(ndk)
+name: ci(with Android NDK)
 
 on:
   push:
@@ -16,10 +16,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-    - name: Setup NDK
-      uses: nttld/setup-ndk@v1
-      with:
-        ndk-version: r26c
+      - name: Setup NDK
+        uses: nttld/setup-ndk@v1
+        with:
+          ndk-version: r26c
 
-    - name: Build init
-      run: ndk-build
+      - name: Build init
+        run: ndk-build
