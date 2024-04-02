@@ -22,4 +22,4 @@ jobs:
           ndk-version: r26c
 
       - name: Build init
-        run: ndk-build
+        run: export NDK_PROJECT_PATH=$(pwd) && ndk-build
