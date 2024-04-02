@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          path: jni
 
       - name: Setup NDK
         uses: nttld/setup-ndk@v1
@@ -22,4 +24,4 @@ jobs:
           ndk-version: r26c
 
       - name: Build init
-        run: export NDK_PROJECT_PATH=$(pwd) && ndk-build
+        run: cd jni && ndk-build
