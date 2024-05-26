@@ -24,4 +24,4 @@ jobs:
           ndk-version: r26c
 
       - name: Build init
-        run: cd jni && ndk-build
+        run: cd jni && ndk-build V=1 VERBOSE=1
