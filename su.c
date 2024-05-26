@@ -10,7 +10,7 @@
 
 static void help(int status) {
 
-    printf("KernelSU\n"
+    printf("SimpleSU\n"
         "Usage: su [options] [argument...]\n\n"
         "Options: \n"
         "-c Pass command to invoked shell\n"
@@ -21,7 +21,7 @@ static void help(int status) {
 
 }
 
-static bool ksuctl(int cmd, void * arg1, void * arg2) {
+static bool suctl(int cmd, void * arg1, void * arg2) {
 
     int32_t result = 0;
     prctl(0xDEADBEEF, cmd, arg1, arg2, & result);
@@ -32,7 +32,7 @@ static bool ksuctl(int cmd, void * arg1, void * arg2) {
 void elevate() {
 
     // Talk to Daemon in Kernel Space
-    bool status = ksuctl(CMD_GRANT_ROOT, 0, NULL);
+    bool status = suctl(CMD_GRANT_ROOT, 0, NULL);
 
     if (!status) {
         fprintf(stderr, "Permission denied\n");
@@ -46,7 +46,7 @@ int getver() {
     elevate();
 
     int32_t version = -1;
-    ksuctl(CMD_GET_VERSION, & version, NULL);
+    suctl(CMD_GET_VERSION, & version, NULL);
     
     return version;
 }
@@ -92,7 +92,7 @@ int main(int argc, char * argv[], char * envp[]) {
         switch (opt) {
         case 'v': {
             int version = getver();
-            printf("%d:KernelSU\n", version);
+            printf("%d:SimpleSU\n", version);
             exit(EXIT_SUCCESS);
         }
         case 'c':
