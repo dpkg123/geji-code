@@ -1,11 +1,4 @@
-#if 0
-	shc Version 4.0.3, Generic Shell Script Compiler
-	GNU GPL Version 3 Md Jahidul Hamid <jahidulhamid@yahoo.com>
-
-	shc -f ../fix.sh 
-#endif
-
-static  char data [] = 
+static  char data [] =
 #define      chk2_z	19
 #define      chk2	((&data[4]))
 	"\142\330\315\350\074\243\201\265\351\062\132\242\020\131\352\221"
